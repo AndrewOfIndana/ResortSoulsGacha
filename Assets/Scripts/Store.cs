@@ -36,4 +36,25 @@ public class Store : MonoBehaviour
     {
 
     }
+
+    public CharacterInfo GetPullResult() {
+        
+        CharacterInfo result = null;
+
+        List<CharacterInfo> HAT_POOL = new List<CharacterInfo>();
+
+        foreach (CharacterInfo item in character_list) 
+        {
+            for (int i = 0; i < item.drop_rate; i++) //drop_rate indicates how many tokens for the character_info will be in the hat
+            {
+                HAT_POOL.Add(item);
+            }
+        }
+
+        result = character_list[Random.Range(0, HAT_POOL.Count)];
+
+
+        return result;
+    
+    }
 }
