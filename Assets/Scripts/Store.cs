@@ -5,7 +5,10 @@ using UnityEngine;
 public class Store : MonoBehaviour
 {
     public static Store Instance { get; private set; }
-    //Contains a list of every CharacterInfo object
+
+    [Header("CharacterInfo")]
+    [Tooltip("MUST CONTAIN EVERY CHARACTERINFO OBJECT IN THE GAME")]
+    public List<CharacterInfo> character_list; //Contains a list of every CharacterInfo object
 
     // Start is called before the first frame update
 
