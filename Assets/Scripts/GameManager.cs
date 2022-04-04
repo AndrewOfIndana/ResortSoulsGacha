@@ -10,18 +10,4 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);   
     }
 
-    void Update()
-    {
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Debug.Log("Game has Quit");
-                // Insert Code Here (I.E. Load Scene, Etc)
-                // OR Application.Quit();
- 
-                return;
-            }
-        }
-    }
 }
