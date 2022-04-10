@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float shootSpeed;
+
     void Start()
     {
-        
+        Rigidbody2D r2d = this.GetComponent<Rigidbody2D>();
+        r2d.AddRelativeForce( new Vector2(shootSpeed, 0f));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSpeed(int difficulty)
     {
-        
+        shootSpeed = (75 + (float)(25 * difficulty));
+    }
+
+    public void OnTriggerStay2D (Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.SendMessage("Damage", SendMessageOptions.DontRequireReceiver);
+            Destroy(this.gameObject);
+        }
+        else if(other.gameObject.CompareTag("KillBounds"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

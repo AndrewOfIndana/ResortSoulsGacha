@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private MinigameOneManager gameManager;
     private PlayerInput playerTouch;
     public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("MinigameController").GetComponent<MinigameOneManager>();
         playerTouch = GameObject.Find("PlayerTouch").GetComponent<PlayerInput>();
     }
 
@@ -24,13 +26,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Damage()
     {
-        //if(other.gameObject.CompareTag("Kill"))
-        //{
-        //    manager.SendMessage("GameOver");
-        //    Destroy(this);
-        //    Destroy(gameObject);
-        //}
+        gameManager.SendMessage("GameOver", SendMessageOptions.DontRequireReceiver);
+        this.gameObject.SetActive(false);
     }
 }
