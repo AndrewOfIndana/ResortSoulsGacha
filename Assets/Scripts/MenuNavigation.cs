@@ -39,7 +39,7 @@ public class MenuNavigation : MonoBehaviour
     }
     public void OpenShop()
     {
-        Debug.Log("Opening Shop");
+        SceneManager.LoadScene("ShopScene");
     }
     public void OpenMinigames()
     {
