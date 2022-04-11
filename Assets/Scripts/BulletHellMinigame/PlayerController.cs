@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private MinigameOneManager gameManager;
-    private PlayerInput playerTouch;
+    public MinigameOneManager gameManager;
+    public PlayerInput playerTouch;
     public float speed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("MinigameController").GetComponent<MinigameOneManager>();
-        playerTouch = GameObject.Find("PlayerTouch").GetComponent<PlayerInput>();
-    }
 
     // Update is called once per frame
     void Update()

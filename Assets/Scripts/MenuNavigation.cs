@@ -6,19 +6,23 @@ using TMPro;
 
 public class MenuNavigation : MonoBehaviour
 {
+    private GameManager gameController;
     public bool isMenuOpen;
     public GameObject defaultScreen;
     public GameObject dialogueScreen;
     public GameObject inventoryScreen;
     public GameObject miniGamesScreen;
+    public TextMeshProUGUI cloutTxt;
 
     void Start()
     {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         isMenuOpen = false;
         defaultScreen.SetActive(true);
         //dialogueScreen.SetActive(false);
         inventoryScreen.SetActive(false);
         miniGamesScreen.SetActive(false);
+        UpdateUI();
     }
 
     public void OpenDialogue()
@@ -26,14 +30,12 @@ public class MenuNavigation : MonoBehaviour
         isMenuOpen = true;
         //defaultScreen.SetActive(false);
         //dialogueScreen.SetActive(true);
-        Debug.Log("OpenDialogue");
     }
     public void OpenInventory()
     {
         isMenuOpen = true;
         defaultScreen.SetActive(false);
         inventoryScreen.SetActive(true);
-        Debug.Log("OpenInventory");
     }
     public void OpenShop()
     {
@@ -45,7 +47,10 @@ public class MenuNavigation : MonoBehaviour
         defaultScreen.SetActive(false);
         miniGamesScreen.SetActive(true);
     }
-
+    public void OpenMinigameOne()
+    {
+        SceneManager.LoadScene("BulletHellMinigame");
+    }
     public void Close()
     {
         isMenuOpen = false;
@@ -55,11 +60,8 @@ public class MenuNavigation : MonoBehaviour
         miniGamesScreen.SetActive(false);
     }
 
-    void Update()
+    void UpdateUI()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("WOrk");
-        }
+        cloutTxt.text = "Clout: " + gameController.clout.ToString();
     }
 }

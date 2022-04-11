@@ -6,13 +6,13 @@ public class BulletSpawner : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform[] firingPositions;
-    public float shootRate;
-    public bool isActive;
-    public float rotationTime = 5f;
-    public int difficultyLocalScale;
 
+    private int difficultyLocalScale;
     private float shootTime;
+    private float shootRate = 1f;
+    private float rotationTime = 5f;
     private bool isTurning;
+    private bool isActive;
 
     void Start()
     {

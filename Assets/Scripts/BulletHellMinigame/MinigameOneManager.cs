@@ -7,18 +7,21 @@ using TMPro;
 public class MinigameOneManager : MonoBehaviour
 {
     public BulletSpawner[] spawner;
-    public float timeAlive = 0f;
     public TextMeshProUGUI timeAliveTxt;
     public GameObject startingScreen;
     public GameObject gameOverScreen;
-    public float chooseSpawnerRate = 5f;
-    public int difficultyScale;
-    public bool isGame = false;
+    public TextMeshProUGUI deathTxt;
+    public int nominalClout;
 
+    private float timeAlive = 0f;
+    private int difficultyScale;
+    private float chooseSpawnerRate = 5f;
     private float chooseSpawnerTime = 5f;
+    private bool isGame = false;
 
     void Start()
     {
+        nominalClout = 0;
         timeAliveTxt.text = timeAlive.ToString("0.00");
         Invoke("SetGame", 5f);
         startingScreen.SetActive(true);
@@ -74,9 +77,19 @@ public class MinigameOneManager : MonoBehaviour
     {
         isGame = false;
         gameOverScreen.SetActive(true);
+        nominalClout = (int)(timeAlive*3);
+        deathTxt.text = "You earned " + nominalClout.ToString() + " clout";
+        GameManager globalGameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+        globalGameManager.SendMessage("MiniGameOneResults", nominalClout);
+    }
 
-        //GameManager globalGameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
-        //globalGameManager.SendMessage("MiniGameOneResults",213);
+    public void Retry()
+    {
+        SceneManager.LoadScene("BulletHellMinigame");
+    }
 
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }
