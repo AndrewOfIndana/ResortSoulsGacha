@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BulletHellMinigame.unity
     guid: 6d90c2fe3eacdfd4193622bf68d5adde
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: 9bd9fc09b3c3cc44a921dc57a28b5c8a
   m_configObjects: {}
